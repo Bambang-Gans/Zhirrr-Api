@@ -2434,7 +2434,7 @@ router.get('/maker/skatc', async(req, res, next) => {
   if(!text) return res.json(loghandler.noturl)
   if(!apikey) return res.json(loghandler.notparam)
   if(listkey.includes(apikey)){
-  let hasil = `http://zekais-api.herokuapp.com/foliokiri?text='+ text +'`
+  let hasil = `http://zekais-api.herokuapp.com/foliokiri?text=${text}`
   data = await fetch(hasil).then(v => v.buffer())
          await fs.writeFileSync(__path +'/tmp/skatch.jpeg', data)
         res.sendFile(__path+'/tmp/skatch.jpeg')
